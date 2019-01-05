@@ -2,17 +2,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ProductRepositoryTest {
 
+    private static final String PRODUCT_TEST_NAME = "Ignition Coil";
+    private static final double PRODUCT_TEST_PRICE = 250;
     private ProductRepository productRepository = ProductRepository.INSTANCE;
     private Product product;
 
 
+
     @Before
     public void setup(){
-        product = new Product("Ignition Coil", 250);
+        product = new Product(PRODUCT_TEST_NAME, PRODUCT_TEST_PRICE);
+        productRepository.create(product);
     }
 
     @After
@@ -22,24 +28,12 @@ public class ProductRepositoryTest {
 
     @Test
     public void create() {
-        productRepository.create(product);
         assertEquals(1, productRepository.count());
     }
 
     @Test
-    public void get() {
-        productRepository.create(product);
-        Product productTmp = productRepository.get(0);
-        assertEquals(product.getName(), productTmp.getName());
-        assertEquals(product.getPrice(), productTmp.getPrice(), 0);
-    }
-
-    @Test
     public void delete() {
-        productRepository.create(product);
-        productRepository.print();
         assertTrue(productRepository.delete(product));
-       productRepository.print();
     }
 
     @Test
@@ -55,10 +49,10 @@ public class ProductRepositoryTest {
 
     @Test
     public void getById() {
-
-
-       fail();
+        List<Product> all = productRepository.getAll();
+        int id = all.get(0).getId();
+        Product productFromRepo = productRepository.getById(id);
+        assertEquals(PRODUCT_TEST_NAME, productFromRepo.getName());
+        assertEquals(PRODUCT_TEST_PRICE, productFromRepo.getPrice(), 0);
     }
-
-
 }

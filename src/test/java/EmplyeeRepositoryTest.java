@@ -19,14 +19,6 @@ public class EmplyeeRepositoryTest {
         assertEquals(1, emplyeeRepository.count());
     }
 
-    @Test
-    public void get() {
-        emplyeeRepository.create(employee);
-        Employee employeeTmp = emplyeeRepository.get(0);
-        assertEquals(employee.getFirstName(), employeeTmp.getFirstName());
-        assertEquals(employee.getLastName(), employeeTmp.getLastName());
-
-    }
 
     @Test
     public void delete() {
@@ -41,7 +33,6 @@ public class EmplyeeRepositoryTest {
         Employee employeeTmp = new Tester("Franek", "dolas");
         employeeTmp.setId(2);
         Employee updated = emplyeeRepository.update(employeeTmp);
-        //emplyeeRepository.print();
         assertEquals(updated.getFirstName(), employeeTmp.getFirstName());
         assertEquals(updated.getLastName(), employeeTmp.getLastName());
     }

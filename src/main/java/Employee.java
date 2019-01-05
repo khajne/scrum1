@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public abstract class Employee {
+public abstract class Employee implements IdSetGet{
     private String firstName, lastName;
     private int id;
 

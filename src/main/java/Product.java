@@ -1,4 +1,4 @@
-public class Product {
+public class Product implements IdSetGet {
 
     private String name;
     private int id;
