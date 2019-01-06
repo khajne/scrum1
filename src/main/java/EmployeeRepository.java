@@ -1,5 +1,5 @@
-public class EmplyeeRepository extends AbstractRepository<Employee> {
-    public static EmplyeeRepository INSTANCE = new EmplyeeRepository();
+public class EmployeeRepository extends AbstractRepository<Employee> {
+    public static EmployeeRepository INSTANCE = new EmployeeRepository();
 
     @Override
     public String toString() {

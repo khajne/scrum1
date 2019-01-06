@@ -17,6 +17,7 @@ public class ProductRepositoryTest {
 
     @Before
     public void setup(){
+        productRepository = new ProductRepository();
         product = new Product(PRODUCT_TEST_NAME, PRODUCT_TEST_PRICE);
         productRepository.create(product);
     }
@@ -41,7 +42,7 @@ public class ProductRepositoryTest {
         Product product2 = new Product("Engine liquid", 32);
         productRepository.create(product2);
         Product productTmp = new Product("Engine Super liquid", 42);
-        productTmp.setId(2);
+        productTmp.setId(1);
         Product updated = productRepository.update(productTmp);
         assertEquals(updated.getName(), productTmp.getName());
         assertEquals(updated.getPrice(), productTmp.getPrice(), 0);
