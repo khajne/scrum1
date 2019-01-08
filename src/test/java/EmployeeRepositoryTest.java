@@ -8,10 +8,11 @@ import static org.junit.Assert.*;
 
 public class EmployeeRepositoryTest {
 
-    private EmployeeRepository employeeRepository = EmployeeRepository.INSTANCE;
-    private Employee employee;
     private static final String EMPLOYEE_TEST__FIRST_NAME =  "Jan";
     private static final String EMPLOYEE_TEST__LAST_NAME = "Kowalski";
+    private EmployeeRepository employeeRepository = EmployeeRepository.INSTANCE;
+    private Employee employee;
+
 
 
     @Before

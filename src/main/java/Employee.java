@@ -3,12 +3,13 @@ import java.util.Objects;
 public abstract class Employee implements IdSetGet{
     private String firstName, lastName;
     private int id;
+    private EmployeeAbsence employeeAbsence;
 
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.employeeAbsence = new EmployeeAbsence();
     }
 
     public int getId() {
@@ -19,6 +20,13 @@ public abstract class Employee implements IdSetGet{
         this.id = id;
     }
 
+    public EmployeeAbsence getEmployeeAbsence() {
+        return employeeAbsence;
+    }
+
+    public void setEmployeeAbsence(EmployeeAbsence employeeAbsence) {
+        this.employeeAbsence = employeeAbsence;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -55,6 +63,6 @@ public abstract class Employee implements IdSetGet{
         return "Employee{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}';
+                id + '}';
     }
 }
