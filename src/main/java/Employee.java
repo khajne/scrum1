@@ -1,15 +1,35 @@
+import java.math.BigDecimal;
 import java.util.Objects;
 
-public abstract class Employee implements IdSetGet{
+public abstract class Employee implements IdSetGet {
     private String firstName, lastName;
     private int id;
     private EmployeeAbsence employeeAbsence;
+    private ContractType contractType;
+    private BigDecimal baseSalary;
 
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.baseSalary = new BigDecimal("0");
         this.employeeAbsence = new EmployeeAbsence();
+    }
+
+    public BigDecimal getBaseSalary() {
+        return baseSalary;
+    }
+
+    public void setBaseSalary(double baseSalary) {
+        this.baseSalary = new BigDecimal(String.valueOf(baseSalary)).setScale(2,BigDecimal.ROUND_HALF_EVEN);
+    }
+
+    public ContractType getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(ContractType contractType) {
+        this.contractType = contractType;
     }
 
     public int getId() {
@@ -58,11 +78,4 @@ public abstract class Employee implements IdSetGet{
         return Objects.hash(getFirstName(), getLastName());
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                id + '}';
-    }
 }
