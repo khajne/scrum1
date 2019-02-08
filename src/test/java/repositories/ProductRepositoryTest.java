@@ -1,6 +1,10 @@
+package repositories;
+
+import model.Product;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import repositories.ProductRepository;
 
 import java.util.List;
 

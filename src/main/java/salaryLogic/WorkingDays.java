@@ -1,3 +1,5 @@
+package salaryLogic;
+
 import java.time.LocalDate;
 
 public  class WorkingDays {

@@ -1,3 +1,5 @@
+package repositories;
+
 import java.util.List;
 
 /**
@@ -7,12 +9,13 @@ import java.util.List;
 
 public interface Repository<Entity> {
 
-    boolean create(Entity entity);
-    Entity getById(int id);
+    //Entity getById(int id);
     List<Entity> getAll();
     boolean delete(Entity entity);
     void deleteAll();
-    Entity update(Entity entity);
     int count();
+    boolean create(Entity entity);
+    Entity update(Entity entity);
+
 
 }
