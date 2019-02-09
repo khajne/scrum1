@@ -13,6 +13,9 @@ public class Salary {
         if (employee.getContractType() == ContractType.CONTRACT_OF_EMPL) {
             return getMonthContractOfEmplSalary(year, month, employee, employeeAbsenceRepository);
         }
+        else if (employee.getContractType() == ContractType.B2B) {
+            return getMonthContractOfEmplSalary(year, month, employee, employeeAbsenceRepository);
+        }
         else {
             throw new IllegalArgumentException("Ups, sth went wrong if u see this msg :(");
         }
@@ -36,6 +39,23 @@ public class Salary {
             return round(finalSalary, 2);
         }
     }
+
+    private static double getMonthB2BSalary(int year, int month, Employee employee, EmployeeAbsenceRepository employeeAbsenceRepository) {
+
+        double baseSalary = employee.getBaseSalary();
+        int unpaidLeaveDaysUsed = employeeAbsenceRepository.getUnpaidLeaveDaysUsedInMonth(employee.getEmployeeId(), year, month);
+
+        if (unpaidLeaveDaysUsed == 0) {
+            return baseSalary;
+        } else {
+            int workingDays = WorkingDays.getWorkingDays(year, month);
+            int daysWorked = WorkingDays.getWorkingDays(year, month) - unpaidLeaveDaysUsed;
+            double salaryPerDay = baseSalary / workingDays;
+            double finalSalary = salaryPerDay * daysWorked;
+            return round(finalSalary, 2);
+        }
+    }
+
 
     private static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
